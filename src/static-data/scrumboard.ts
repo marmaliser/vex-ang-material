@@ -66,32 +66,32 @@ export const scrumboardAttachments: ScrumboardAttachment[] = [
 
 export const scrumboardUsers: ScrumboardUser[] = [
   {
-    name: 'David Smith',
-    imageSrc: 'assets/img/avatars/1.jpg'
+    name: 'Dr. John H. Watson',
+    imageSrc: 'assets/img/avatars/1.png'
   },
   {
     name: 'Michael Bolta',
-    imageSrc: 'assets/img/avatars/2.jpg'
+    imageSrc: 'assets/img/avatars/2.png'
   },
   {
     name: 'Jenny Zents',
-    imageSrc: 'assets/img/avatars/3.jpg'
+    imageSrc: 'assets/img/avatars/3.png'
   },
   {
     name: 'Donald Orisan',
-    imageSrc: 'assets/img/avatars/4.jpg'
+    imageSrc: 'assets/img/avatars/4.png'
   },
   {
     name: 'Frank Uhrzeen',
-    imageSrc: 'assets/img/avatars/5.jpg'
+    imageSrc: 'assets/img/avatars/5.png'
   },
   {
     name: 'James Blound',
-    imageSrc: 'assets/img/avatars/6.jpg'
+    imageSrc: 'assets/img/avatars/6.png'
   },
   {
     name: 'Peter Moffeen',
-    imageSrc: 'assets/img/avatars/7.jpg'
+    imageSrc: 'assets/img/avatars/7.png'
   }
 ];
 

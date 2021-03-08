@@ -11,7 +11,7 @@ export class ComponentsOverviewCardsComponent implements OnInit {
 
   cardHTML = `<mat-card>
   <mat-card-header>
-    <img mat-card-avatar src="assets/img/avatars/3.jpg">
+    <img mat-card-avatar src="assets/img/avatars/3.png">
     <mat-card-subtitle>
       Yesterday
     </mat-card-subtitle>

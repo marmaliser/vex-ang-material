@@ -75,7 +75,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
     const customer = this.form.value;
 
     if (!customer.imageSrc) {
-      customer.imageSrc = 'assets/img/avatars/1.jpg';
+      customer.imageSrc = 'assets/img/avatars/1.png';
     }
 
     this.dialogRef.close(customer);

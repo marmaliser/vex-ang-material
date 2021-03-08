@@ -23,7 +23,7 @@ export class SocialComponent implements OnInit {
 
   links: Link[] = [
     {
-      label: 'ABOUT',
+      label: 'YOUR DETAILS',
       route: './',
       routerLinkActiveOptions: { exact: true }
     },
