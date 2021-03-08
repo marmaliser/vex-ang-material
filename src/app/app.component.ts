@@ -62,18 +62,18 @@ export class AppComponent {
 
     /**
      * Customize the template to your needs with the ConfigService
-     * Example:
-     *  this.configService.updateConfig({
-     *    sidenav: {
-     *      title: 'Custom App',
-     *      imageUrl: '//placehold.it/100x100',
-     *      showCollapsePin: false
-     *    },
-     *    footer: {
-     *      visible: false
-     *    }
-     *  });
-     */
+     * Example:*/
+    this.configService.updateConfig({
+      sidenav: {
+        title: 'HCP Portal',
+        imageUrl: 'assets/img/demo/logo.svg',
+        showCollapsePin: false
+     },
+      footer: {
+        visible: false
+      }
+    });
+     
 
     /**
      * Config Related Subscriptions
@@ -104,14 +104,14 @@ export class AppComponent {
     this.navigationService.items = [
       {
         type: 'link',
-        label: 'Dashboard',
+        label: 'My Profile',
         route: '/',
         icon: icLayers,
         routerLinkActiveOptions: { exact: true }
       },
       {
         type: 'subheading',
-        label: 'Apps',
+        label: 'PIQ Form Actions',
         children: [
           {
             type: 'link',

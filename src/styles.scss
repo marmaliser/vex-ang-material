@@ -15,16 +15,20 @@
   in Chrome/Firefox DevTools
 */
 
+
 /**
   Uncomment the below code and adjust the values to fit your colors, the application will automatically adjust
  */
+
 :root {
-  // --color-primary: blue;
-  // --color-primary-contrast: white;
+    // --color-primary: #6d2077;
+    // --color-primary-contrast: white;
+    // --color-accent: #ff5c39;
+    // --color-accent-contrast: black;
+    // --color-warn: #f6be00;
+    // --color-warn-contrast: black;
+}
 
-  // --color-accent: yellow;
-  // --color-accent-contrast: black;
-
-  // --color-warn: yellow;
-  // --color-warn-contrast: black;
+:root {
+    --font: 'Fira Sans', "Helvetica Neue", sans-serif;
 }
