@@ -3,14 +3,37 @@
 // Vex Core
 @import "./@vex/styles/core";
 
+/* Prototype Code 
+*/
+
+html {
+    filter: grayscale(100%);
+}
+
+
 /*
   You can override any CSS Variable or style here
-  Example:
+  Example:*/
 
-  :root {
-   --sidenav-background: #333333;
-  }
+ :root {
+    /* Color Palette */
+    --color-primary: #6d2077;
+    --color-accent: #ff5c39;
+    /* Font (Corprate) */
+    --font: 'Fira Sans', "Helvetica Neue", sans-serif;
+    // --font: 'Handlee', cursive;
+    /* Layout elements */
+    --sidebar-background: #{darken(#6d2077, 1.5)};
+    --sidenav-item-background-active: #{darken(#6d2077, 3)};
+    --sidenav-item-dropdown-background: #{darken(#6d2077, 3)};
+    --sidenav-toolbar-background: #{darken(#6d2077, 1.5)};
+    --toolbar-background: #{darken(#6d2077, 1.5)};
+    --toolbar-icon-color: white;
+    --toolbar-color: white;
+}
 
+
+/*
   All possible variables can be found in @vex/styles/core or by simply inspecting the element you want to change
   in Chrome/Firefox DevTools
 */
@@ -20,15 +43,11 @@
   Uncomment the below code and adjust the values to fit your colors, the application will automatically adjust
  */
 
-:root {
-    // --color-primary: #6d2077;
-    // --color-primary-contrast: white;
-    // --color-accent: #ff5c39;
-    // --color-accent-contrast: black;
-    // --color-warn: #f6be00;
-    // --color-warn-contrast: black;
-}
-
-:root {
-    --font: 'Fira Sans', "Helvetica Neue", sans-serif;
-}
+//:root {
+// --color-primary: #6d2077;
+// --color-primary-contrast: white;
+// --color-accent: #ff5c39;
+// --color-accent-contrast: black;
+// --color-warn: #f6be00;
+// --color-warn-contrast: black;
+//}

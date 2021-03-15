@@ -32,19 +32,19 @@ export class ContactsTableMenuComponent implements OnInit {
       type: 'link',
       id: 'all',
       icon: icViewHeadline,
-      label: 'All Contacts'
+      label: 'All Patient PIQs'
     },
     {
       type: 'link',
       id: 'frequently',
       icon: icHistory,
-      label: 'Frequently contacted'
+      label: 'Active Patients'
     },
     {
       type: 'link',
       id: 'starred',
       icon: icStar,
-      label: 'Starred'
+      label: 'PIQ Complete'
     },
     {
       type: 'subheading',
@@ -54,7 +54,7 @@ export class ContactsTableMenuComponent implements OnInit {
       type: 'link',
       id: 'family',
       icon: icLabel,
-      label: 'Family',
+      label: 'Label 1',
       classes: {
         icon: 'text-primary'
       }
@@ -63,7 +63,7 @@ export class ContactsTableMenuComponent implements OnInit {
       type: 'link',
       id: 'friends',
       icon: icLabel,
-      label: 'Friends',
+      label: 'Label 2',
       classes: {
         icon: 'text-green'
       }
@@ -72,7 +72,7 @@ export class ContactsTableMenuComponent implements OnInit {
       type: 'link',
       id: 'colleagues',
       icon: icLabel,
-      label: 'Colleagues',
+      label: 'Label 3',
       classes: {
         icon: 'text-amber'
       }
@@ -81,7 +81,7 @@ export class ContactsTableMenuComponent implements OnInit {
       type: 'link',
       id: 'business',
       icon: icLabel,
-      label: 'Business',
+      label: 'Label 4',
       classes: {
         icon: 'text-gray'
       }

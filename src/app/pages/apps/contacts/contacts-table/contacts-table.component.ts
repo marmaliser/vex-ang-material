@@ -17,6 +17,7 @@ import icMenu from '@iconify/icons-ic/twotone-menu';
 @Component({
   selector: 'vex-contacts-table',
   templateUrl: './contacts-table.component.html',
+  styleUrls: ['./contacts-table.component.scss'],
   animations: [
     stagger40ms,
     scaleIn400ms,

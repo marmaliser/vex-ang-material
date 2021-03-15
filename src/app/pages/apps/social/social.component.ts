@@ -23,21 +23,21 @@ export class SocialComponent implements OnInit {
 
   links: Link[] = [
     {
-      label: 'YOUR DETAILS',
+      label: 'PROFILE',
       route: './',
       routerLinkActiveOptions: { exact: true }
     },
+    // {
+    //   label: 'TIMELINE',
+    //   route: './timeline'
+    // },
     {
-      label: 'TIMELINE',
-      route: './timeline'
-    },
-    {
-      label: 'FRIENDS',
+      label: 'PATIENTS',
       route: '',
-      disabled: true
+      //disabled: true
     },
     {
-      label: 'PHOTOS',
+      label: 'NOTIFICATIONS',
       route: '',
       disabled: true
     }

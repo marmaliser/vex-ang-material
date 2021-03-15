@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import icBeenhere from '@iconify/icons-ic/twotone-beenhere';
 import icStars from '@iconify/icons-ic/twotone-stars';
 import icBusinessCenter from '@iconify/icons-ic/twotone-business-center';
+import icAssigment from '@iconify/icons-ic/twotone-assignment';
 import icPhoneInTalk from '@iconify/icons-ic/twotone-phone-in-talk';
 import icMail from '@iconify/icons-ic/twotone-mail';
 import { stagger60ms } from '../../../../@vex/animations/stagger.animation';
@@ -23,6 +24,7 @@ export class PricingComponent implements OnInit {
   icBusinessCenter = icBusinessCenter;
   icPhoneInTalk = icPhoneInTalk;
   icMail = icMail;
+  icAssigment = icAssigment;
 
   constructor() { }
 
