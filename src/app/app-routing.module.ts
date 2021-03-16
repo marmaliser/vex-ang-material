@@ -24,13 +24,13 @@ const routes: VexRoutes = [
     path: '',
     component: CustomLayoutComponent,
     children: [
-      {
-        path: 'dashboards/analytics',
-        redirectTo: '/'
-      },
+      // {
+      //   path: 'dashboards/analytics',
+      //   redirectTo: '/'
+      // },
       {
         path: '',
-        loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
+        loadChildren: () => import('./pages/pages/pricing/pricing.module').then(m => m.PricingModule),
       },
       {
         path: 'apps',

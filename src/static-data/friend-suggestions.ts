@@ -9,7 +9,7 @@ export const friendSuggestions: FriendSuggestion[] = [
   },
   {
     name: 'Priscilla Ayala',
-    imageSrc: 'assets/img/avatars/2.png',
+    imageSrc: 'assets/img/avatars/5.png',
     friends: 3,
     added: false
   },
@@ -21,32 +21,32 @@ export const friendSuggestions: FriendSuggestion[] = [
   },
   {
     name: 'Alston Tucker',
-    imageSrc: 'assets/img/avatars/4.png',
+    imageSrc: 'assets/img/avatars/14.png',
     friends: 1,
     added: true
-  },
-  {
-    name: 'Frye Humphrey',
-    imageSrc: 'assets/img/avatars/5.png',
-    friends: 1,
-    added: true
-  },
-  {
-    name: 'Jannie Cochran',
-    imageSrc: 'assets/img/avatars/6.png',
-    friends: 5,
-    added: false
-  },
-  {
-    name: 'Perkins Doyle',
-    imageSrc: 'assets/img/avatars/7.png',
-    friends: 7,
-    added: false
-  },
-  {
-    name: 'Marci Boyd',
-    imageSrc: 'assets/img/avatars/8.png',
-    friends: 2,
-    added: false
   }
+  // {
+  //   name: 'Frye Humphrey',
+  //   imageSrc: 'assets/img/avatars/5.png',
+  //   friends: 1,
+  //   added: true
+  // },
+  // {
+  //   name: 'Jannie Cochran',
+  //   imageSrc: 'assets/img/avatars/6.png',
+  //   friends: 5,
+  //   added: false
+  // },
+  // {
+  //   name: 'Perkins Doyle',
+  //   imageSrc: 'assets/img/avatars/7.png',
+  //   friends: 7,
+  //   added: false
+  // },
+  // {
+  //   name: 'Marci Boyd',
+  //   imageSrc: 'assets/img/avatars/8.png',
+  //   friends: 2,
+  //   added: false
+  // }
 ];

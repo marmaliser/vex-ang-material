@@ -28,7 +28,7 @@ export const aioTableLabels = [
 export const aioTableData = [
   {
     id: 0,
-    imageSrc: 'assets/img/avatars/20.jpg',
+    imageSrc: 'assets/img/avatars/12.png',
     firstName: 'Dejesus',
     lastName: 'Chang',
     street: '899 Raleigh Place',
