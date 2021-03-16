@@ -120,8 +120,14 @@ export class AppComponent {
           },
           {
             type: 'link',
+            label: 'Patient PIQ Forms (2)',
+            route: '/apps/aio-table',
+            icon: icPersonOutline
+          },
+          {
+            type: 'link',
             label: 'EOS Notifications',
-            route: '/apps/calendar',
+            route: '/coming-soon',
             icon: icWatchLater,
             badge: {
               value: '2',

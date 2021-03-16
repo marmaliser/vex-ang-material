@@ -1,13 +1,13 @@
 <div class="w-full h-full flex flex-col">
-    <div class="px-gutter pt-6 pb-20 bg-primary flex-none">
+    <div class="px-gutter pt-6 pb-20 bg-base flex-none">
         <div class="flex items-center" vexContainer>
             <button (click)="openMenu()" @scaleIn class="sm:hidden text-primary-contrast" mat-icon-button type="button">
         <mat-icon [icIcon]="icMenu"></mat-icon>
       </button>
-            <h2 class="headline m-0 flex items-center w-full max-w-xxxs mr-6">
+            <h1 class="headline m-0 flex items-center w-full max-w-xxxs mr-6 text-primary">
                 <ic-icon @scaleIn [icon]="icContacts" class="hidden sm:block"></ic-icon>
                 <span @fadeInRight class="ml-4 block">Patient PIQ Forms</span>
-            </h2>
+            </h1>
 
             <div class="hidden sm:flex items-center bg-card shadow-none rounded-full overflow-hidden relative ltr:pl-5 rtl:pr-5 h-12 max-w-md w-full shadow-8 mx-auto">
                 <ic-icon [icon]="icSearch" class="text-secondary flex-none" size="24px"></ic-icon>

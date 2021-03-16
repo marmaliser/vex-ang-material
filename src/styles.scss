@@ -6,10 +6,9 @@
 /* Prototype Code 
 */
 
-html {
-    filter: grayscale(100%);
-}
-
+// html {
+//     filter: grayscale(100%);
+// }
 
 /*
   You can override any CSS Variable or style here
@@ -17,14 +16,15 @@ html {
 
  :root {
     /* Color Palette */
-    --color-primary: #6d2077;
-    --color-accent: #ff5c39;
+    --color-primary: 109, 32, 119;
+    --color-accent: 255, 92, 57;
     /* Font (Corprate) */
     --font: 'Fira Sans', "Helvetica Neue", sans-serif;
     // --font: 'Handlee', cursive;
     /* Layout elements */
     --sidebar-background: #{darken(#6d2077, 1.5)};
     --sidenav-item-background-active: #{darken(#6d2077, 3)};
+    --sidenav-item-icon-color-active: white;
     --sidenav-item-dropdown-background: #{darken(#6d2077, 3)};
     --sidenav-toolbar-background: #{darken(#6d2077, 1.5)};
     --toolbar-background: #{darken(#6d2077, 1.5)};
