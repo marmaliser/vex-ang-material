@@ -147,23 +147,23 @@ export class AppComponent {
         type: 'subheading',
         label: 'Portal Admin',
         children: [
-          {
-            type: 'link',
-            label: 'My Calendar',
-            route: '/apps/calendar',
-            icon: icDateRange,
-            badge: {
-              value: '4',
-              bgClass: 'bg-deep-purple',
-              textClass: 'text-deep-purple-contrast'
-            }
-          },
-          {
-            type: 'link',
-            label: 'My Contacts',
-            route: '/apps/contacts/grid/all',
-            icon: icContacts,   
-          },
+          // {
+          //   type: 'link',
+          //   label: 'My Calendar',
+          //   route: '/apps/calendar',
+          //   icon: icDateRange,
+          //   badge: {
+          //     value: '4',
+          //     bgClass: 'bg-deep-purple',
+          //     textClass: 'text-deep-purple-contrast'
+          //   }
+          // },
+          // {
+          //   type: 'link',
+          //   label: 'My Contacts',
+          //   route: '/apps/contacts/grid/all',
+          //   icon: icContacts,   
+          // },
           {
             type: 'link',
             label: 'My Profile',
@@ -178,86 +178,86 @@ export class AppComponent {
           },
         ]
       },
-      {
-        type: 'subheading',
-        label: 'Help Center',
-        children: [
-          {
-            type: 'link',
-            label: 'Getting Started',
-            icon: icBook,
-            route: '/apps/help-center/getting-started'
-          },
-          {
-            type: 'link',
-            label: 'FAQ',
-            icon: icContactSupport,
-            route: '/apps/help-center/faq',
-          },
-          {
-            type: 'link',
-            label: 'Guides',
-            icon: icBook,
-            route: '/apps/help-center/guides'
-          },
-        ]
-      },
-      {
-        type: 'subheading',
-        label: 'Pages',
-        children: [
-          {
-            type: 'dropdown',
-            label: 'Authentication',
-            icon: icLock,
-            children: [
-              {
-                type: 'link',
-                label: 'Login',
-                route: '/login'
-              },
-              {
-                type: 'link',
-                label: 'Register',
-                route: '/register'
-              },
-              {
-                type: 'link',
-                label: 'Forgot Password',
-                route: '/forgot-password'
-              }
-            ]
-          },
-          {
-            type: 'link',
-            label: 'Coming Soon',
-            icon: icWatchLater,
-            route: '/coming-soon'
-          },
-          {
-            type: 'dropdown',
-            label: 'Errors',
-            icon: icError,
-            badge: {
-              value: '4',
-              bgClass: 'bg-green',
-              textClass: 'text-green-contrast',
-            },
-            children: [
-              {
-                type: 'link',
-                label: '404',
-                route: '/pages/error-404'
-              },
-              {
-                type: 'link',
-                label: '500',
-                route: '/pages/error-500'
-              }
-            ]
-          }
-        ]
-      }
+      // {
+      //   type: 'subheading',
+      //   label: 'Help Center',
+      //   children: [
+      //     {
+      //       type: 'link',
+      //       label: 'Getting Started',
+      //       icon: icBook,
+      //       route: '/apps/help-center/getting-started'
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'FAQ',
+      //       icon: icContactSupport,
+      //       route: '/apps/help-center/faq',
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Guides',
+      //       icon: icBook,
+      //       route: '/apps/help-center/guides'
+      //     },
+      //   ]
+      // },
+      // {
+      //   type: 'subheading',
+      //   label: 'Pages',
+      //   children: [
+      //     {
+      //       type: 'dropdown',
+      //       label: 'Authentication',
+      //       icon: icLock,
+      //       children: [
+      //         {
+      //           type: 'link',
+      //           label: 'Login',
+      //           route: '/login'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: 'Register',
+      //           route: '/register'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: 'Forgot Password',
+      //           route: '/forgot-password'
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Coming Soon',
+      //       icon: icWatchLater,
+      //       route: '/coming-soon'
+      //     },
+      //     {
+      //       type: 'dropdown',
+      //       label: 'Errors',
+      //       icon: icError,
+      //       badge: {
+      //         value: '4',
+      //         bgClass: 'bg-green',
+      //         textClass: 'text-green-contrast',
+      //       },
+      //       children: [
+      //         {
+      //           type: 'link',
+      //           label: '404',
+      //           route: '/pages/error-404'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: '500',
+      //           route: '/pages/error-500'
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // }
     ];
 
     // this.navigationService.items = [

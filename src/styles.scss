@@ -6,9 +6,10 @@
 /* Prototype Code 
 */
 
-// html {
-//     filter: grayscale(100%);
-// }
+html {
+    filter: grayscale(100%);
+}
+
 
 /*
   You can override any CSS Variable or style here
@@ -19,8 +20,8 @@
     --color-primary: 109, 32, 119;
     --color-accent: 255, 92, 57;
     /* Font (Corprate) */
-    --font: 'Fira Sans', "Helvetica Neue", sans-serif;
-    // --font: 'Handlee', cursive;
+    // --font: 'Fira Sans', "Helvetica Neue", sans-serif;
+    --font: 'Permanent Marker', cursive;
     /* Layout elements */
     --sidebar-background: #{darken(#6d2077, 1.5)};
     --sidenav-item-background-active: #{darken(#6d2077, 3)};
