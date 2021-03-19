@@ -235,6 +235,11 @@ export class AppComponent {
             route: '/coming-soon'
           },
           {
+            type: 'link',
+            label: 'Forms',
+            route: '/ui/forms/form-elements'
+          },
+          {
             type: 'dropdown',
             label: 'Errors',
             icon: icError,
