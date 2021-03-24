@@ -1,0 +1,71 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "directory": "firebase/functions",
+      "changeProcessCWD": true
+    },
+  ],
+  // - Editior settings -
+  // "editor.autoIndent": "full",
+  // "editor.codeLens": false,
+  // "editor.cursorBlinking": "solid",
+  // "editor.cursorSmoothCaretAnimation": true,
+  // "editor.cursorStyle": "line",
+  // "editor.fontSize": 13,
+  // "editor.fontFamily": "SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace",
+  // "editor.fontLigatures": true,
+  // "editor.formatOnPaste": true,
+  // "editor.formatOnType": false,
+  // "editor.formatOnSave": true,
+  // - File settings -
+  // "files.autoSave": "onFocusChange",
+  // "files.autoSaveDelay": 0,
+  // "files.defaultLanguage": "",
+  // "files.trimTrailingWhitespace": true,
+  //Prettier settings -
+  "prettier.printWidth": 120,
+  "prettier.bracketSpacing": true,
+  "prettier.singleQuote": true,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "window.zoomLevel": 0,
+  // "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "autoClosingTags": false
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.maxItemsComputed": 15000
+}

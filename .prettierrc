@@ -1,0 +1,20 @@
+{
+  "useTabs": false,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "ignorePath": ".prettierignore",
+  "insertPragma": false,
+  "packageManager": "npm",
+  "printWidth": 140,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requireConfig": false,
+  "requirePragma": false,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}

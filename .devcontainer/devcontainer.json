@@ -1,0 +1,37 @@
+{
+	"name": "Kubernetes Dev Environment",
+	"dockerFile": "Dockerfile",
+	//"appPort": 9000,
+	"context": "..",
+	"extensions": [
+		//"pivotal.vscode-concourse",
+		// "ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
+		"atlassian.atlascode",
+		"eamodio.gitlens",
+		"bierner.markdown-mermaid",
+		"ms-vsliveshare.vsliveshare",
+		"eamodio.gitlens",
+		"redhat.vscode-yaml",
+		"atlassian.atlascode",
+		"burtlo.inspec",
+		"esbenp.prettier-vscode"
+	],
+	// Delegate docker engine work to host, and pull the config and ssh config from host
+	"runArgs": [
+		"-v",
+		"/var/run/docker.sock:/var/run/docker.sock",
+		"-v",
+		"${localEnv:HOME}/.config:/root/.config",
+		"-v",
+		"${localEnv:HOME}/.ssh:/root/.ssh",
+		"-v",
+		"${localEnv:HOME}/.azure:/root/.azure",
+		"-v",
+		"${localEnv:HOME}/auth:/root/auth"
+	],
+	"settings": {
+		// "go.gopath": "/go",
+	},
+	"postCreateCommand": "/workspaces/vex-ang-material/.devcontainer/runtimeSetup.sh > /runtimeSetup.log"
+}
