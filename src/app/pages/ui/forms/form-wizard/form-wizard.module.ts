@@ -17,7 +17,6 @@ import { IconModule } from '@visurel/iconify-angular';
 import { BreadcrumbsModule } from '../../../../../@vex/components/breadcrumbs/breadcrumbs.module';
 import { ContainerModule } from '../../../../../@vex/directives/container/container.module';
 
-
 @NgModule({
   declarations: [FormWizardComponent],
   imports: [
@@ -35,8 +34,7 @@ import { ContainerModule } from '../../../../../@vex/directives/container/contai
     MatSelectModule,
     IconModule,
     BreadcrumbsModule,
-    ContainerModule
-  ]
+    ContainerModule,
+  ],
 })
-export class FormWizardModule {
-}
+export class FormWizardModule {}

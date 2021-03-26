@@ -21,7 +21,6 @@ import { ContainerModule } from '../../../../@vex/directives/container/container
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
 @NgModule({
   declarations: [AioTableComponent],
   imports: [
@@ -44,8 +43,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     ReactiveFormsModule,
     ContainerModule,
     MatSelectModule,
-    MatButtonToggleModule
-  ]
+    MatButtonToggleModule,
+  ],
 })
-export class AioTableModule {
-}
+export class AioTableModule {}

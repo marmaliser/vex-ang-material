@@ -18,9 +18,9 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 
     // Vex
     VexModule,
-    CustomLayoutModule
+    CustomLayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

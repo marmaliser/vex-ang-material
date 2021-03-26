@@ -12,6 +12,8 @@ import { CustomerCreateUpdateComponent } from './customer-create-update.componen
 import { MatMenuModule } from '@angular/material/menu';
 import { IconModule } from '@visurel/iconify-angular';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -26,11 +28,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSelectModule,
     MatMenuModule,
     IconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatStepperModule,
+    MatDatepickerModule,
   ],
   declarations: [CustomerCreateUpdateComponent],
   entryComponents: [CustomerCreateUpdateComponent],
-  exports: [CustomerCreateUpdateComponent]
+  exports: [CustomerCreateUpdateComponent],
 })
-export class CustomerCreateUpdateModule {
-}
+export class CustomerCreateUpdateModule {}

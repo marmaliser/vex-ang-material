@@ -16,10 +16,9 @@ import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
 @Component({
   selector: 'vex-customer-create-update',
   templateUrl: './customer-create-update.component.html',
-  styleUrls: ['./customer-create-update.component.scss']
+  styleUrls: ['./customer-create-update.component.scss'],
 })
 export class CustomerCreateUpdateComponent implements OnInit {
-
   static id = 100;
 
   form: FormGroup;
@@ -38,10 +37,11 @@ export class CustomerCreateUpdateComponent implements OnInit {
   icEditLocation = icEditLocation;
   icPhone = icPhone;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public defaults: any,
-              private dialogRef: MatDialogRef<CustomerCreateUpdateComponent>,
-              private fb: FormBuilder) {
-  }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public defaults: any,
+    private dialogRef: MatDialogRef<CustomerCreateUpdateComponent>,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     if (this.defaults) {
@@ -59,7 +59,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
       city: this.defaults.city || '',
       zipcode: this.defaults.zipcode || '',
       phoneNumber: this.defaults.phoneNumber || '',
-      notes: this.defaults.notes || ''
+      notes: this.defaults.notes || '',
     });
   }
 
