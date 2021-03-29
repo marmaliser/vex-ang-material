@@ -152,7 +152,8 @@
             </div>
 
             <div class="px-6 pt-4 pb-0" fxLayout="column">
-                <mat-form-field appearance="fill">
+
+                <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Please select a Physician</mat-label>
                     <mat-select>
                         <mat-option>None</mat-option>
@@ -168,17 +169,18 @@
 
                 <h2 class="mb-1">Add Physician Details</h2>
 
-                <mat-form-field appearance="fill" color="primary">
+                <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Physician Name</mat-label>
+                    <mat-hint>Click on the input or the datepicker icon</mat-hint>
                     <input matInput type="text">
                 </mat-form-field>
 
-                <mat-form-field appearance="fill" color="accent">
+                <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Physician Email</mat-label>
                     <input matInput type="email">
                 </mat-form-field>
 
-                <mat-form-field appearance="fill" color="warn">
+                <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Physician NPI Number</mat-label>
                     <input matInput type="text">
                 </mat-form-field>
