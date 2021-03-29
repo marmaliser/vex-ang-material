@@ -1,9 +1,9 @@
-@import "~simplebar/dist/simplebar.css";
-@import "~highlight.js/styles/androidstudio.css";
+@import '~simplebar/dist/simplebar.css';
+@import '~highlight.js/styles/androidstudio.css';
 // Vex Core
-@import "./@vex/styles/core";
+@import './@vex/styles/core';
 
-/* Prototype Code 
+/* Prototype Code
 */
 
 // html {
@@ -14,30 +14,28 @@
   You can override any CSS Variable or style here
   Example:*/
 
- :root {
-    /* Color Palette */
-    --color-primary: 109, 32, 119;
-    --color-accent: 255, 92, 57;
-    /* Font (Corprate) */
-    --font: 'Fira Sans', "Helvetica Neue", sans-serif;
-    // --font: 'Handlee', cursive;
-    /* Layout elements */
-    --sidebar-background: #{darken(#6d2077, 1.5)};
-    --sidenav-item-background-active: #{darken(#6d2077, 3)};
-    --sidenav-item-icon-color-active: white;
-    --sidenav-item-dropdown-background: #{darken(#6d2077, 3)};
-    --sidenav-toolbar-background: #{darken(#6d2077, 1.5)};
-    --toolbar-background: #{darken(#6d2077, 1.5)};
-    --toolbar-icon-color: white;
-    --toolbar-color: white;
+:root {
+  /* Color Palette */
+  --color-primary: 109, 32, 119;
+  --color-accent: 255, 92, 57;
+  /* Font (Corprate) */
+  --font: 'Fira Sans', 'Helvetica Neue', sans-serif;
+  // --font: 'Handlee', cursive;
+  /* Layout elements */
+  --sidebar-background: #{darken(#6d2077, 1.5)};
+  --sidenav-item-background-active: #{darken(#6d2077, 3)};
+  --sidenav-item-icon-color-active: white;
+  --sidenav-item-dropdown-background: #{darken(#6d2077, 3)};
+  --sidenav-toolbar-background: #{darken(#6d2077, 1.5)};
+  --toolbar-background: #{darken(#6d2077, 1.5)};
+  --toolbar-icon-color: white;
+  --toolbar-color: white;
 }
-
 
 /*
   All possible variables can be found in @vex/styles/core or by simply inspecting the element you want to change
   in Chrome/Firefox DevTools
 */
-
 
 /**
   Uncomment the below code and adjust the values to fit your colors, the application will automatically adjust

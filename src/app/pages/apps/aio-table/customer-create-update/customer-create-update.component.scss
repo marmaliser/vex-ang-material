@@ -1,3 +1,10 @@
 .mat-form-field {
   display: contents;
 }
+
+mat-step-header {
+  pointer-events: none !important;
+}
+mat-step-header:hover {
+  background-color: rgba(0, 0, 0, 0) im !important;
+}

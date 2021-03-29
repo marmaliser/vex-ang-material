@@ -22,7 +22,7 @@
       <mat-step label="Physician Details">
         <mat-form-field appearance="fill">
           <mat-label>Please select a Physician</mat-label>
-          <mat-select>
+          <mat-select disableOptionCentering>
             <mat-option>None</mat-option>
             <mat-option value="DrPatel">Dr Patel</mat-option>
             <mat-option value="DrWatson">Dr Watson</mat-option>
@@ -50,6 +50,7 @@
           <mat-label>Physician NPI Number</mat-label>
           <input matInput type="text" />
         </mat-form-field>
+        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
       <mat-step label="Surgeon Details">
         <mat-form-field appearance="fill">
@@ -101,6 +102,8 @@
           <mat-hint>Click on the input or the datepicker icon</mat-hint>
           <mat-datepicker #formDatepickerRef></mat-datepicker>
         </mat-form-field> -->
+        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
+        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
       <mat-step label="Patient Details">
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
@@ -188,6 +191,9 @@
             <input matInput type="text" />
           </mat-form-field>
         </div>
+
+        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
+        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
       <mat-step label="Insurance Information">
         <p class="mt-0 mb-4 text-secondary">
@@ -258,6 +264,9 @@
             </mat-form-field>
           </div>
         </div>
+
+        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
+        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
       <mat-step label="Principal Diagnosis"
         ><p class="mt-0 mb-4 text-secondary">
@@ -302,8 +311,10 @@
             <button mat-button type="button">SAVE</button>
             <button color="primary" mat-raised-button type="button">NEXT</button>
           </div>
-        </div></mat-step
-      >
+        </div>
+        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
+        <button color="primary" mat-raised-button type="button">SUBMIT</button>
+      </mat-step>
     </mat-horizontal-stepper>
     <!-- TODO -->
     <!-- <div class="flex flex-col sm:flex-row">
@@ -359,9 +370,9 @@
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close type="button">CANCEL</button>
-    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit">CREATE PATIENT</button>
-    <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit">UPDATE PATIENT</button>
+    <button mat-button mat-dialog-close type="button" disabled>CANCEL</button>
+    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit" disabled>CREATE PATIENT</button>
+    <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit" disabled>UPDATE PATIENT</button>
   </mat-dialog-actions>
 </form>
 
