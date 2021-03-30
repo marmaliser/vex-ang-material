@@ -1,22 +1,14 @@
 <form (ngSubmit)="save()" [formGroup]="form">
   <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
-    <img *ngIf="form.get('imageSrc').value" [src]="form.get('imageSrc').value" class="avatar mr-5" />
-
-    <h2 *ngIf="form.get('firstName').value || form.get('lastName').value" class="headline m-0" fxFlex="auto">
-      {{ form.get('firstName').value + ' ' + form.get('lastName').value }}
-    </h2>
-    <h2 *ngIf="!form.get('firstName').value && !form.get('lastName').value" class="headline m-0" fxFlex="auto">New Patient PIQ Form</h2>
-
+    <h2 class="headline m-0" fxFlex="auto">New Patient PIQ Form</h2>
     <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
       <mat-icon [icIcon]="icMoreVert"></mat-icon>
     </button>
-
     <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
       <mat-icon [icIcon]="icClose"></mat-icon>
     </button>
   </div>
   <mat-divider class="-mx-6 text-border"></mat-divider>
-
   <mat-dialog-content fxLayout="column">
     <mat-horizontal-stepper linear #stepper>
       <mat-step label="Physician Details">
@@ -29,23 +21,17 @@
             <mat-option value="NotListed">Not Listed</mat-option>
           </mat-select>
         </mat-form-field>
-
         <!--<p class="pb-4">You selected: {{selected}}</p> -->
-
         <p class="pb-4 text-accent">If 'Not Listed' is selected, we expose these form inputs:</p>
-
         <h2 class="mb-1">Add Physician Details</h2>
-
         <mat-form-field appearance="fill" color="primary">
           <mat-label>Physician Name</mat-label>
           <input matInput type="text" />
         </mat-form-field>
-
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Physician Email</mat-label>
           <input matInput type="email" />
         </mat-form-field>
-
         <mat-form-field appearance="fill" color="warn">
           <mat-label>Physician NPI Number</mat-label>
           <input matInput type="text" />
@@ -116,12 +102,10 @@
             <input matInput required />
           </mat-form-field>
         </div>
-
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Patient Address</mat-label>
           <input matInput type="text" />
         </mat-form-field>
-
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="50">
             <mat-label>City</mat-label>
@@ -136,32 +120,25 @@
             <input matInput required />
           </mat-form-field>
         </div>
-
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Patient Phone Number</mat-label>
           <input matInput type="tel" />
         </mat-form-field>
-
         <mat-form-field appearance="fill" color="accent">
           <mat-label>Patient Email</mat-label>
           <input matInput type="email" />
         </mat-form-field>
-
         <p class="mt-0 mb-4 text-secondary">Sex</p>
-
         <div fxLayout="column" fxLayoutGap="16px">
           <mat-radio-group fxLayout="row" fxLayoutGap="16px">
             <mat-radio-button [checked]="true" value="Male">Male</mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
           </mat-radio-group>
-
           <mat-form-field appearance="fill" color="accent">
             <mat-label>SSN</mat-label>
             <input matInput type="text" />
           </mat-form-field>
-
           <!-- TODO -->
-
           <!-- <mat-form-field>
             <mat-label>Date of Birth</mat-label>
             <input
@@ -175,23 +152,19 @@
             <mat-hint>Click on the input or the datepicker icon</mat-hint>
             <mat-datepicker #formDatepickerRef></mat-datepicker>
           </mat-form-field> -->
-
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Guardian / Contact Name</mat-label>
             <input matInput type="text" />
           </mat-form-field>
-
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Guardian / Contact Email</mat-label>
             <input matInput type="email" />
           </mat-form-field>
-
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Group Home Name</mat-label>
             <input matInput type="text" />
           </mat-form-field>
         </div>
-
         <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
         <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
@@ -199,7 +172,6 @@
         <p class="mt-0 mb-4 text-secondary">
           Allow the user to slide toggle an option or a value. You can either click or you can drag & drop the slide to change its state.
         </p>
-
         <div fxLayout="row" fxLayoutAlign="space-between">
           <div fxLayout="column" fxLayoutGap="8px">
             <h3>PRIMARY INSURER</h3>
@@ -264,15 +236,13 @@
             </mat-form-field>
           </div>
         </div>
-
         <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
         <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
-      <mat-step label="Principal Diagnosis"
-        ><p class="mt-0 mb-4 text-secondary">
+      <mat-step label="Principal Diagnosis">
+        <p class="mt-0 mb-4 text-secondary">
           Allow the user to slide toggle an option or a value. You can either click or you can drag & drop the slide to change its state.
         </p>
-
         <div fxLayout="row" fxLayoutAlign="space-between">
           <div fxLayout="column" fxLayoutGap="8px">
             <mat-radio-group>
@@ -377,17 +347,17 @@
 </form>
 
 <mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
-  <button mat-menu-item>
+  <button mat-menu-item disabled>
     <mat-icon [icIcon]="icPrint"></mat-icon>
     <span>Print</span>
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item disabled>
     <mat-icon [icIcon]="icDownload"></mat-icon>
     <span>Export</span>
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item disabled>
     <mat-icon [icIcon]="icDelete"></mat-icon>
     <span>Delete</span>
   </button>
