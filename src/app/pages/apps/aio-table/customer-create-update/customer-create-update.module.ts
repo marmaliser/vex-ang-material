@@ -14,6 +14,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDividerModule,
     MatStepperModule,
     MatDatepickerModule,
+    MatNativeDateModule,
   ],
   declarations: [CustomerCreateUpdateComponent],
   entryComponents: [CustomerCreateUpdateComponent],
