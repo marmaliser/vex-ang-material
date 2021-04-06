@@ -23,3 +23,6 @@ describe('BlankComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+export class AppComponent  {
+  selectedOption = '0';
+}

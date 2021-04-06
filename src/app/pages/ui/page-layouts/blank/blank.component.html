@@ -1,5 +1,259 @@
 <vex-secondary-toolbar [crumbs]="['Blank Page']" current="Blank Page"></vex-secondary-toolbar>
+<div class="container">
 
-<div class="p-gutter" vexContainer>
-  <h3 class="title m-0">Content comes here...</h3>
+    <h1>VNS Therapy &reg;<br /> Eligibility and Education Form</h1>
+    <div class="progress-bar">
+        <div class="step">
+            <p>Requesting<br />Physician</p>
+            <div class="bullet">
+                <span>1</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>Surgeon<br />Details</p>
+            <div class="bullet">
+                <span>2</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>Patient<br />Information</p>
+            <div class="bullet">
+                <span>3</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>Principal<br /> Diagnosis </p>
+            <div class="bullet">
+                <span>4</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+            <p>Insurance<br /> Details </p>
+            <div class="bullet">
+                <span>5</span>
+            </div>
+            <div class="check fas fa-check"></div>
+        </div>
+    </div>
+    <div class="form-outer">
+        <form id="piq" action="#">
+            <div class="page slide-page">
+                <div class="title">Requesting Physician:</div>
+                <div class="field">
+                    <label for="physician">Physician:</label>
+                    <select name="physicians" id="physicians" form="piq">
+                    <option value="None">-- Select --</option>
+                    <option value="JHWatson">Dr. John H Watson</option>
+                    <option value="NotListed">Not Listed</option>
+                  </select>
+                </div>
+                <div class="addPhysician">
+                    <div class="subtitle">Add New Physician:</div>
+                    <div class="field">
+                        <label for="physicianName">Physician Name:</label>
+                        <input id="physicianName" type="text">
+                    </div>
+                    <div class="field">
+                        <label for="physicianEmail">Physician Email Address:</label>
+                        <input id="physicianEmail" type="text">
+                    </div>
+                    <div class="field">
+                        <label for="physicianNPI">Physician NPI Number:</label>
+                        <input id="physicianNPI" type="text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <button class="firstNext next">Next</button>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="title">Surgeon Details:</div>
+                <div class="field">
+                    <label for="surgeons">Surgeon:</label>
+                    <select name="surgeons" id="surgeons" form="piq">
+                  <option value="None">-- Select --</option>
+                  <option value="JHWatson">Dr. John H Watson</option>
+                  <option value="NotListed">Not Listed</option>
+                </select>
+                </div>
+                <div class="addSurgeon">
+                    <div class="subtitle">Add New Surgeon:</div>
+                    <div class="field">
+                        <label for="surgeonName">Surgeon Name:</label>
+                        <input id="surgeonName" type="text">
+                    </div>
+                    <div class="field">
+                        <label for="surgeonEmail">Surgeon Email Address:</label>
+                        <input id="surgeonEmail" type="text">
+                    </div>
+                    <div class="field">
+                        <label for="surgeonNPI">Surgeon NPI Number:</label>
+                        <input id="surgeonNPI" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="implantingHospital">Implanting Hospital:</label>
+                    <input id="implantingHospital" type="text">
+                </div>
+                <div class="field">
+                    <label for="surgeryComments">Comments:</label>
+                    <textarea id="surgeryComments" name="comments" form="piq"></textarea>
+                </div>
+                <div class="field">
+                    <label for="surgeryDate">Surgery Date:</label>
+                    <input id="surgeryDate" type="date">
+                </div>
+                <div class="field btns ">
+                    <button class="prev-1 prev ">Previous</button>
+                    <button class="next-1 next ">Next</button>
+                </div>
+            </div>
+
+            <div class="page ">
+                <div class="title ">Patient Information:</div>
+                <div class="field ">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="address">Address</label>
+                    <input id="address" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="city">City</label>
+                    <input id="city" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="state">State</label>
+                    <input id="state" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="zipCode">Zip Code</label>
+                    <input id="zipCode" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="telephone">Telephone</label>
+                    <input id="telephone" type="text ">
+                </div>
+                <div class="field ">
+                    <label for="patientEmail">Email Address</label>
+                    <input id="patientEmail" type="email">
+                </div>
+                <div class="field ">
+                    <label for="gender">Gender</label>
+                    <select>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                </div>
+                <div class="field ">
+                    <label for="patientSSN">Social Security Number (SSN)</label>
+                    <input id="patientSSN" type="text">
+                </div>
+                <div class="field ">
+                    <label for="patientDOB">Date of Birth</label>
+                    <input id="patientDOB" type="date">
+                </div>
+                <div class="field ">
+                    <label for="guardianName">Guardian / Contact Name</label>
+                    <input id="guardianName" type="text">
+                </div>
+                <div class="field ">
+                    <label for="guardianEmail">Guardian / Contact Email</label>
+                    <input id="guardianEmail" type="text">
+                </div>
+                <div class="field ">
+                    <label for="homeName">Group Home Name</label>
+                    <input id="homeName" type="text">
+                </div>
+                <div class="field btns ">
+                    <button class="prev-2 prev ">Previous</button>
+                    <button class="next-2 next ">Next</button>
+                </div>
+            </div>
+
+            <div class="page ">
+                <div class="title ">Principal Diagnosis:</div>
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.211">G40.211 Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with complex partial seizures, intractable, with status epilepticus
+                      <input type="checkbox" id="G40.211" name="G40.211" value="G40.211">
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.219">G40.219 Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with complex partial seizures, intractable, without status epilepticus
+                          <input type="checkbox" id="G40.219 " name="G40.219" value="G40.219">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.011">G40.011 Localization-related (focal) (partial) idiopathic epilepsy and epileptic syndromes with seizures of localized onset, intractable, with status
+                          <input type="checkbox" id="G40.011" name="G40.011" value="G40.011">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.019">G40.019 Localization-related (focal) (partial) idiopathic epilepsy and epileptic syndromes with seizures of localized onset, intractable, without status epilepticus
+                          <input type="checkbox" id="G40.019" name="G40.019" value="G40.019">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.111">G40.111 (Attacks without alteration of conscious) Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with simple partial seizures, intractable, with status epilepticus
+                          <input type="checkbox" id="G40.111" name="G40.111" value="G40.111">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="G40.119">G40.119 (Attacks without alteration of conscious) Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with simple partial seizures, intractable, without status epilepticus
+                          <input type="checkbox" id="G40.119" name="G40.119" value="G40.119">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+
+                <div class="field ">
+                    <label class="checkbox_container" for="diag_other">Other (Please describe)
+                          <input type="checkbox" id="diag_other" name="diag_other" value="diag_other">
+                          <span class="checkmark"></span>
+                      </label>
+                </div>
+                <div class="field btns ">
+                    <button class="prev-3 prev ">Previous</button>
+                    <button class="next-3 next ">Next</button>
+                </div>
+            </div>
+
+            <div class="page ">
+                <div class="title ">Insurance Details:</div>
+                <div class="field ">
+                    <div class="label ">Username</div>
+                    <input type="text ">
+                </div>
+                <div class="field ">
+                    <div class="label ">Password</div>
+                    <input type="password ">
+                </div>
+                <div class="field btns ">
+                    <button class="prev-4 prev ">Previous</button>
+                    <button class="submit ">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
