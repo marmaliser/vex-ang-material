@@ -14,29 +14,31 @@
       <mat-step label="Physician Details">
         <mat-form-field appearance="fill">
           <mat-label>Please select a Physician</mat-label>
-          <mat-select disableOptionCentering>
-            <mat-option>None</mat-option>
+          <mat-select disableOptionCentering [formControl]="physicianSelect" required>
+            <mat-option>Not Listed</mat-option>
             <mat-option value="DrPatel">Dr Patel</mat-option>
             <mat-option value="DrWatson">Dr Watson</mat-option>
-            <mat-option value="NotListed">Not Listed</mat-option>
           </mat-select>
         </mat-form-field>
+        <ng-container *ngIf="physicianSelect.value == null">
+          <h2 class="mb-1">Add Physician Details</h2>
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Physician Name</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Physician Email</mat-label>
+            <input matInput type="email" />
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="warn">
+            <mat-label>Physician NPI Number</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+        </ng-container>
+
         <!--<p class="pb-4">You selected: {{selected}}</p> -->
-        <p class="pb-4 text-accent">If 'Not Listed' is selected, we expose these form inputs:</p>
-        <h2 class="mb-1">Add Physician Details</h2>
-        <mat-form-field appearance="fill" color="primary">
-          <mat-label>Physician Name</mat-label>
-          <input matInput type="text" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label>Physician Email</mat-label>
-          <input matInput type="email" />
-        </mat-form-field>
-        <mat-form-field appearance="fill" color="warn">
-          <mat-label>Physician NPI Number</mat-label>
-          <input matInput type="text" />
-        </mat-form-field>
-        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
+
+        <button matStepperNext color="primary" mat-raised-button type="button" disabled="physicianSelect.hasError('required')">NEXT</button>
       </mat-step>
       <mat-step label="Surgeon Details">
         <mat-form-field appearance="fill">
@@ -48,7 +50,6 @@
             <mat-option value="NotListed">Not Listed</mat-option>
           </mat-select>
         </mat-form-field>
-        <p class="pb-4 text-accent">If 'Not Listed' is selected, we expose these form inputs:</p>
 
         <h2 class="mb-1">Add Surgeon Details</h2>
         <mat-form-field appearance="fill" color="primary">
@@ -75,19 +76,12 @@
           <mat-label>Comments</mat-label>
           <textarea matInput></textarea>
         </mat-form-field>
-        <!-- <mat-form-field>
+        <mat-form-field>
           <mat-label>Surgery Date</mat-label>
-          <input
-            (click)="formDatepickerRef.open()"
-            (focus)="formDatepickerRef.open()"
-            [matDatepicker]="formDatepickerRef"
-            matInput
-            readonly
-          />
-          <mat-datepicker-toggle [for]="formDatepickerRef" matSuffix></mat-datepicker-toggle>
-          <mat-hint>Click on the input or the datepicker icon</mat-hint>
-          <mat-datepicker #formDatepickerRef></mat-datepicker>
-        </mat-form-field> -->
+          <input [matDatepicker]="surgeryDatepicker" matInput readonly />
+          <mat-datepicker-toggle [for]="surgeryDatepicker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #surgeryDatepicker></mat-datepicker>
+        </mat-form-field>
         <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
         <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
       </mat-step>
@@ -139,19 +133,12 @@
             <input matInput type="text" />
           </mat-form-field>
           <!-- TODO -->
-          <!-- <mat-form-field>
+          <mat-form-field>
             <mat-label>Date of Birth</mat-label>
-            <input
-              (click)="formDatepickerRef.open()"
-              (focus)="formDatepickerRef.open()"
-              [matDatepicker]="formDatepickerRef"
-              matInput
-              readonly
-            />
-            <mat-datepicker-toggle [for]="formDatepickerRef" matSuffix></mat-datepicker-toggle>
-            <mat-hint>Click on the input or the datepicker icon</mat-hint>
-            <mat-datepicker #formDatepickerRef></mat-datepicker>
-          </mat-form-field> -->
+            <input [matDatepicker]="dateOfBirthDatePicker" matInput readonly />
+            <mat-datepicker-toggle [for]="dateOfBirthDatePicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #dateOfBirthDatePicker></mat-datepicker>
+          </mat-form-field>
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Guardian / Contact Name</mat-label>
             <input matInput type="text" />

@@ -20,8 +20,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ContainerModule } from '../../../../@vex/directives/container/container.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [AioTableComponent],
@@ -46,8 +44,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     ContainerModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
   ],
 })
 export class AioTableModule {}

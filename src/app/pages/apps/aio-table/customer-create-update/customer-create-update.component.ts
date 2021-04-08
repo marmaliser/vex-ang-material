@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Customer } from '../interfaces/customer.model';
 import icMoreVert from '@iconify/icons-ic/twotone-more-vert';
@@ -20,7 +20,7 @@ import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
 })
 export class CustomerCreateUpdateComponent implements OnInit {
   static id = 100;
-
+  physicianSelect = new FormControl('', Validators.required);
   form: FormGroup;
   mode: 'create' | 'update' = 'create';
 
