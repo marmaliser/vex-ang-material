@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Customer } from '../interfaces/customer.model';
 import icMoreVert from '@iconify/icons-ic/twotone-more-vert';
@@ -36,6 +36,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
   icLocationCity = icLocationCity;
   icEditLocation = icEditLocation;
   icPhone = icPhone;
+  physicianInputMode: 'select' | 'create' = 'select';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public defaults: any,
@@ -51,15 +52,16 @@ export class CustomerCreateUpdateComponent implements OnInit {
     }
 
     this.form = this.fb.group({
-      id: [CustomerCreateUpdateComponent.id++],
-      imageSrc: this.defaults.imageSrc,
-      firstName: [this.defaults.firstName || ''],
-      lastName: [this.defaults.lastName || ''],
-      street: this.defaults.street || '',
-      city: this.defaults.city || '',
-      zipcode: this.defaults.zipcode || '',
-      phoneNumber: this.defaults.phoneNumber || '',
-      notes: this.defaults.notes || '',
+      formArray: new FormArray([new FormGroup({ physicianSelect: new FormControl() })]),
+      // id: [CustomerCreateUpdateComponent.id++],
+      // imageSrc: this.defaults.imageSrc,
+      // firstName: [this.defaults.firstName || ''],
+      // lastName: [this.defaults.lastName || ''],
+      // street: this.defaults.street || '',
+      // city: this.defaults.city || '',
+      // zipcode: this.defaults.zipcode || '',
+      // phoneNumber: this.defaults.phoneNumber || '',
+      // notes: this.defaults.notes || '',
     });
   }
 

@@ -1,44 +1,58 @@
-<form (ngSubmit)="save()" [formGroup]="form">
-  <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
-    <h2 class="headline m-0" fxFlex="auto">New Patient PIQ Form</h2>
-    <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
-      <mat-icon [icIcon]="icMoreVert"></mat-icon>
-    </button>
-    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
-      <mat-icon [icIcon]="icClose"></mat-icon>
-    </button>
-  </div>
-  <mat-divider class="-mx-6 text-border"></mat-divider>
-  <mat-dialog-content fxLayout="column">
-    <mat-horizontal-stepper linear #stepper>
+<div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+  <h2 class="headline m-0" fxFlex="auto">New Patient PIQ Form</h2>
+  <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+  </button>
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon [icIcon]="icClose"></mat-icon>
+  </button>
+</div>
+<mat-divider class="-mx-6 text-border"></mat-divider>
+<mat-dialog-content fxLayout="column">
+  <form (ngSubmit)="save()" [formGroup]="form">
+    <mat-horizontal-stepper linear #stepper formArrayName="formArray">
       <mat-step label="Physician Details">
-        <mat-form-field appearance="fill">
-          <mat-label>Please select a Physician</mat-label>
-          <mat-select disableOptionCentering [formControl]="physicianSelect" required>
-            <mat-option>Not Listed</mat-option>
-            <mat-option value="DrPatel">Dr Patel</mat-option>
-            <mat-option value="DrWatson">Dr Watson</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <ng-container *ngIf="physicianSelect.value == null">
-          <h2 class="mb-1">Add Physician Details</h2>
+        <ng-container [formGroup]="physicianSelect" *ngIf="physicianInputMode == 'select'">
+          <mat-form-field appearance="fill">
+            <mat-label>Please select a Physician</mat-label>
+            <mat-select disableOptionCentering [formControl]="physicianSelect" selectionChange="alert(1)" optionSelectionChanges=>
+              <mat-option>- Select a Phsyician - </mat-option>
+              <mat-option value="notListed">Not Listed</mat-option>
+              <mat-option value="DrPatel">Dr Patel</mat-option>
+              <mat-option value="DrWatson">Dr Watson</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <ng-container [formGroup]="physicianSelect" *ngIf="physicianInputMode == 'create'"
+          >>
+          <div fxLayoutAlign="space-between">
+            <h2 class="mb-1">Add Physician Details</h2>
+            <button class="text-secondary" mat-icon-button type="button" (click)="physicianInputMode = 'select'">
+              <mat-icon [icIcon]="icClose"></mat-icon>
+            </button>
+          </div>
           <mat-form-field appearance="fill" color="primary">
             <mat-label>Physician Name</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" required />
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Physician Email</mat-label>
-            <input matInput type="email" />
+            <input matInput type="email" required />
           </mat-form-field>
           <mat-form-field appearance="fill" color="warn">
             <mat-label>Physician NPI Number</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" required />
           </mat-form-field>
         </ng-container>
-
-        <!--<p class="pb-4">You selected: {{selected}}</p> -->
-
-        <button matStepperNext color="primary" mat-raised-button type="button" disabled="physicianSelect.hasError('required')">NEXT</button>
+        <button
+          matStepperNext
+          color="primary"
+          mat-raised-button
+          type="button"
+          [disabled]="physicianSelect.hasError('required') || physicianSelect.value == null"
+        >
+          NEXT
+        </button>
       </mat-step>
       <mat-step label="Surgeon Details">
         <mat-form-field appearance="fill">
@@ -89,7 +103,7 @@
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="auto">
             <mat-label>First Name</mat-label>
-            <input matInput />
+            <input matInput formControlName="lastName" />
           </mat-form-field>
           <mat-form-field fxFlex="auto">
             <mat-label>Last Name</mat-label>
@@ -275,13 +289,6 @@
     </mat-horizontal-stepper>
     <!-- TODO -->
     <!-- <div class="flex flex-col sm:flex-row">
-      <mat-form-field class="mt-6 flex-auto">
-        <mat-label>First Name</mat-label>
-        <input cdkFocusInitial formControlName="firstName" matInput />
-
-        <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
-      </mat-form-field>
-
       <mat-form-field class="sm:mt-6 sm:ml-6 flex-auto">
         <mat-label>Last Name</mat-label>
         <input cdkFocusInitial formControlName="lastName" matInput />
@@ -324,14 +331,14 @@
       <mat-label>Notes</mat-label>
       <textarea formControlName="notes" matInput></textarea>
     </mat-form-field> -->
-  </mat-dialog-content>
+  </form>
+</mat-dialog-content>
 
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close type="button" disabled>CANCEL</button>
-    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit" disabled>CREATE PATIENT</button>
-    <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit" disabled>UPDATE PATIENT</button>
-  </mat-dialog-actions>
-</form>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button" disabled>CANCEL</button>
+  <button *ngIf="isCreateMode()" color="primary" mat-button type="submit" disabled>CREATE PATIENT</button>
+  <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit" disabled>UPDATE PATIENT</button>
+</mat-dialog-actions>
 
 <mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
   <button mat-menu-item disabled>
