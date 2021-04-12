@@ -9,96 +9,92 @@
 </div>
 <mat-divider class="-mx-6 text-border"></mat-divider>
 <mat-dialog-content fxLayout="column">
-  <form (ngSubmit)="save()" [formGroup]="form">
-    <mat-horizontal-stepper linear #stepper formArrayName="formArray">
-      <mat-step label="Physician Details">
-        <ng-container [formGroup]="physicianSelect" *ngIf="physicianInputMode == 'select'">
-          <mat-form-field appearance="fill">
-            <mat-label>Please select a Physician</mat-label>
-            <mat-select disableOptionCentering [formControl]="physicianSelect" selectionChange="alert(1)" optionSelectionChanges=>
-              <mat-option>- Select a Phsyician - </mat-option>
-              <mat-option value="notListed">Not Listed</mat-option>
-              <mat-option value="DrPatel">Dr Patel</mat-option>
-              <mat-option value="DrWatson">Dr Watson</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </ng-container>
-        <ng-container [formGroup]="physicianSelect" *ngIf="physicianInputMode == 'create'"
-          >>
-          <div fxLayoutAlign="space-between">
-            <h2 class="mb-1">Add Physician Details</h2>
-            <button class="text-secondary" mat-icon-button type="button" (click)="physicianInputMode = 'select'">
-              <mat-icon [icIcon]="icClose"></mat-icon>
-            </button>
-          </div>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="physicianFormGroup" [editable]="true">
+      <form [formGroup]="physicianFormGroup" (ngSubmit)="test()">
+        <mat-form-field appearance="fill">
+          <mat-label>Please select a Physician</mat-label>
+          <mat-select
+            disableOptionCentering
+            formControlName="physicianSelect"
+            (selectionChange)="physicianSelectionChange($event)"
+            required
+          >
+            <mat-option value="null">Not Listed</mat-option>
+            <mat-option value="DrPatel">Dr Patel</mat-option>
+            <mat-option value="DrWatson">Dr Watson</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <ng-container *ngIf="physicianCreateMode">
+          <h2 class="mb-1">Add Physician Details</h2>
           <mat-form-field appearance="fill" color="primary">
             <mat-label>Physician Name</mat-label>
-            <input matInput type="text" required />
+            <input matInput type="text" formControlName="physicianName" />
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Physician Email</mat-label>
-            <input matInput type="email" required />
+            <input matInput type="email" formControlName="physicianEmail" />
           </mat-form-field>
           <mat-form-field appearance="fill" color="warn">
             <mat-label>Physician NPI Number</mat-label>
-            <input matInput type="text" required />
+            <input matInput type="text" formControlName="physicianNpi" />
           </mat-form-field>
         </ng-container>
-        <button
-          matStepperNext
-          color="primary"
-          mat-raised-button
-          type="button"
-          [disabled]="physicianSelect.hasError('required') || physicianSelect.value == null"
-        >
-          NEXT
-        </button>
-      </mat-step>
-      <mat-step label="Surgeon Details">
+      </form>
+      <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!physicianFormGroup.valid">NEXT</button>
+    </mat-step>
+    <mat-step [stepControl]="surgeonFormGroup" [editable]="true">
+      <form [formGroup]="surgeonFormGroup" (ngSubmit)="test()">
         <mat-form-field appearance="fill">
           <mat-label>Please select a Surgeon</mat-label>
-          <mat-select>
-            <mat-option>None</mat-option>
-            <mat-option value="DrSPatel">Dr S Patel</mat-option>
-            <mat-option value="DrJHWatson">Dr JH Watson</mat-option>
-            <mat-option value="NotListed">Not Listed</mat-option>
+          <mat-select disableOptionCentering formControlName="surgeonSelect" (selectionChange)="surgeonSelectionChange($event)" required>
+            <mat-option value="null">Not Listed</mat-option>
+            <mat-option value="DrPatel">Dr Patel</mat-option>
+            <mat-option value="DrWatson">Dr Watson</mat-option>
           </mat-select>
         </mat-form-field>
-
-        <h2 class="mb-1">Add Surgeon Details</h2>
-        <mat-form-field appearance="fill" color="primary">
-          <mat-label>Surgeon Name</mat-label>
-          <input matInput type="text" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label>Surgeon Email</mat-label>
-          <input matInput type="email" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" color="warn">
-          <mat-label>Surgeon NPI Number</mat-label>
-          <input matInput type="text" />
-        </mat-form-field>
-
+        <ng-container *ngIf="surgeonCreateMode">
+          <h2 class="mb-1">Add Surgeon Details</h2>
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Surgeon Name</mat-label>
+            <input matInput type="text" formControlName="surgeonName" />
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Surgeon Email</mat-label>
+            <input matInput type="email" formControlName="surgeonEmail" />
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="warn">
+            <mat-label>Surgeon NPI Number</mat-label>
+            <input matInput type="text" formControlName="surgeonNpi" />
+          </mat-form-field>
+        </ng-container>
         <mat-form-field appearance="fill" color="warn">
           <mat-label>Implanting Hospital</mat-label>
-          <input matInput type="text" />
+          <input matInput type="text" formControlName="surgeonHospital" />
         </mat-form-field>
-
         <mat-form-field appearance="fill">
           <mat-label>Comments</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput formControlName="surgeonComments"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Surgery Date</mat-label>
-          <input [matDatepicker]="surgeryDatepicker" matInput readonly />
+          <input [matDatepicker]="surgeryDatepicker" matInput readonly formControlName="surgeryDatepicker" />
           <mat-datepicker-toggle [for]="surgeryDatepicker" matSuffix></mat-datepicker-toggle>
           <mat-datepicker #surgeryDatepicker></mat-datepicker>
         </mat-form-field>
-        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
-        <button matStepperNext color="primary" mat-raised-button type="button">NEXT</button>
-      </mat-step>
+      </form>
+      <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
+      <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!surgeonFormGroup.valid">Next</button>
+    </mat-step>
+    <!-- <mat-step [stepControl]="secondFormGroup" [editable]="true">
+      <form [formGroup]="secondFormGroup" #secondFormGroup></form>
+    </mat-step> -->
+  </mat-horizontal-stepper>
+
+  <!-- <form (ngSubmit)="save()" [formGroup]="form">
+    <mat-horizontal-stepper linear #stepper formArrayName="formArray">
+
+
       <mat-step label="Patient Details">
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="auto">
@@ -146,7 +142,6 @@
             <mat-label>SSN</mat-label>
             <input matInput type="text" />
           </mat-form-field>
-          <!-- TODO -->
           <mat-form-field>
             <mat-label>Date of Birth</mat-label>
             <input [matDatepicker]="dateOfBirthDatePicker" matInput readonly />
@@ -287,8 +282,9 @@
         <button color="primary" mat-raised-button type="button">SUBMIT</button>
       </mat-step>
     </mat-horizontal-stepper>
-    <!-- TODO -->
-    <!-- <div class="flex flex-col sm:flex-row">
+  </form> -->
+  <!-- TODO -->
+  <!-- <div class="flex flex-col sm:flex-row">
       <mat-form-field class="sm:mt-6 sm:ml-6 flex-auto">
         <mat-label>Last Name</mat-label>
         <input cdkFocusInitial formControlName="lastName" matInput />
@@ -331,7 +327,6 @@
       <mat-label>Notes</mat-label>
       <textarea formControlName="notes" matInput></textarea>
     </mat-form-field> -->
-  </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

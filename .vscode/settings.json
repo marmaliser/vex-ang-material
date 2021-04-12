@@ -1,10 +1,4 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "directory": "firebase/functions",
-      "changeProcessCWD": true
-    },
-  ],
   // - Editior settings -
   // "editor.autoIndent": "full",
   // "editor.codeLens": false,

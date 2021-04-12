@@ -12,6 +12,7 @@ import icPerson from '@iconify/icons-ic/twotone-person';
 import icMyLocation from '@iconify/icons-ic/twotone-my-location';
 import icLocationCity from '@iconify/icons-ic/twotone-location-city';
 import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
+import { MatSelect, MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'vex-customer-create-update',
@@ -20,8 +21,11 @@ import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
 })
 export class CustomerCreateUpdateComponent implements OnInit {
   static id = 100;
-  physicianSelect = new FormControl('', Validators.required);
-  form: FormGroup;
+
+  physicianFormGroup: FormGroup;
+  physicianCreateMode = false;
+  surgeonFormGroup: FormGroup;
+  surgeonCreateMode = false;
   mode: 'create' | 'update' = 'create';
 
   icMoreVert = icMoreVert;
@@ -36,13 +40,39 @@ export class CustomerCreateUpdateComponent implements OnInit {
   icLocationCity = icLocationCity;
   icEditLocation = icEditLocation;
   icPhone = icPhone;
-  physicianInputMode: 'select' | 'create' = 'select';
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public defaults: any,
     private dialogRef: MatDialogRef<CustomerCreateUpdateComponent>,
     private fb: FormBuilder
   ) {}
+
+  physicianSelectionChange(event: MatSelectChange) {
+    if (event.value == 'null') {
+      this.physicianCreateMode = true;
+      this.physicianFormGroup.addControl('physicianName', new FormControl('', Validators.required));
+      this.physicianFormGroup.addControl('physicianEmail', new FormControl('', [Validators.required, Validators.email]));
+      this.physicianFormGroup.addControl('physicianNpi', new FormControl('', Validators.required));
+    } else {
+      this.physicianCreateMode = false;
+      this.physicianFormGroup.removeControl('physicianName');
+      this.physicianFormGroup.removeControl('physicianEmail');
+      this.physicianFormGroup.removeControl('physicianNpi');
+    }
+  }
+
+  surgeonSelectionChange(event: MatSelectChange) {
+    if (event.value == 'null') {
+      this.surgeonCreateMode = true;
+      this.surgeonFormGroup.addControl('surgeonName', new FormControl('', Validators.required));
+      this.surgeonFormGroup.addControl('surgeonEmail', new FormControl('', [Validators.required, Validators.email]));
+      this.surgeonFormGroup.addControl('surgeonNpi', new FormControl('', Validators.required));
+    } else {
+      this.surgeonCreateMode = false;
+      this.surgeonFormGroup.removeControl('surgeonName');
+      this.surgeonFormGroup.removeControl('surgeonEmail');
+      this.surgeonFormGroup.removeControl('surgeonNpi');
+    }
+  }
 
   ngOnInit() {
     if (this.defaults) {
@@ -50,18 +80,14 @@ export class CustomerCreateUpdateComponent implements OnInit {
     } else {
       this.defaults = {} as Customer;
     }
-
-    this.form = this.fb.group({
-      formArray: new FormArray([new FormGroup({ physicianSelect: new FormControl() })]),
-      // id: [CustomerCreateUpdateComponent.id++],
-      // imageSrc: this.defaults.imageSrc,
-      // firstName: [this.defaults.firstName || ''],
-      // lastName: [this.defaults.lastName || ''],
-      // street: this.defaults.street || '',
-      // city: this.defaults.city || '',
-      // zipcode: this.defaults.zipcode || '',
-      // phoneNumber: this.defaults.phoneNumber || '',
-      // notes: this.defaults.notes || '',
+    this.physicianFormGroup = this.fb.group({
+      physicianSelect: ['', Validators.required],
+    });
+    this.surgeonFormGroup = this.fb.group({
+      surgeonSelect: ['', Validators.required],
+      surgeonHospital: ['', Validators.required],
+      surgeonComments: ['', Validators.required],
+      surgeryDatepicker: ['', Validators.required],
     });
   }
 
@@ -74,20 +100,17 @@ export class CustomerCreateUpdateComponent implements OnInit {
   }
 
   createCustomer() {
-    const customer = this.form.value;
-
-    if (!customer.imageSrc) {
-      customer.imageSrc = 'assets/img/avatars/1.png';
-    }
-
-    this.dialogRef.close(customer);
+    // const customer = this.form.value;
+    // if (!customer.imageSrc) {
+    //   customer.imageSrc = 'assets/img/avatars/1.png';
+    // }
+    // this.dialogRef.close(customer);
   }
 
   updateCustomer() {
-    const customer = this.form.value;
-    customer.id = this.defaults.id;
-
-    this.dialogRef.close(customer);
+    // // const customer = this.form.value;
+    // customer.id = this.defaults.id;
+    // this.dialogRef.close(customer);
   }
 
   isCreateMode() {
