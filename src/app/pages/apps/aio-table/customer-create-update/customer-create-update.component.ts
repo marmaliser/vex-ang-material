@@ -13,6 +13,7 @@ import icMyLocation from '@iconify/icons-ic/twotone-my-location';
 import icLocationCity from '@iconify/icons-ic/twotone-location-city';
 import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'vex-customer-create-update',
@@ -26,6 +27,9 @@ export class CustomerCreateUpdateComponent implements OnInit {
   physicianCreateMode = false;
   surgeonFormGroup: FormGroup;
   surgeonCreateMode = false;
+  patientFormGroup: FormGroup;
+  insuranceFormGroup: FormGroup;
+  principalDiagnosisFormGroup: FormGroup;
   mode: 'create' | 'update' = 'create';
 
   icMoreVert = icMoreVert;
@@ -73,6 +77,16 @@ export class CustomerCreateUpdateComponent implements OnInit {
       this.surgeonFormGroup.removeControl('surgeonNpi');
     }
   }
+  customDiagnosis = false;
+  diagnosisRadioChange(event: MatRadioChange) {
+    if (event.value == 'null') {
+      this.customDiagnosis = true;
+      this.principalDiagnosisFormGroup.addControl('diagnosisInput', new FormControl('', Validators.required));
+    } else {
+      this.customDiagnosis = false;
+      this.principalDiagnosisFormGroup.removeControl('diagnosisInput');
+    }
+  }
 
   ngOnInit() {
     if (this.defaults) {
@@ -88,6 +102,42 @@ export class CustomerCreateUpdateComponent implements OnInit {
       surgeonHospital: ['', Validators.required],
       surgeonComments: ['', Validators.required],
       surgeryDatepicker: ['', Validators.required],
+    });
+    this.patientFormGroup = this.fb.group({
+      patientFirstName: ['', Validators.required],
+      patientLastName: ['', Validators.required],
+      patientAddress: ['', Validators.required],
+      patientCity: ['', Validators.required],
+      patientState: ['', Validators.required],
+      patientZipCode: ['', Validators.required],
+      patientPhoneNumber: ['', Validators.required],
+      patientEmail: ['', [Validators.required, Validators.email]],
+      patientSex: ['', Validators.required],
+      patientSsn: ['', Validators.required],
+      patientDob: ['', Validators.required],
+      guardianName: ['', Validators.required],
+      guardianEmail: ['', [Validators.required, Validators.email]],
+      groupHomeName: ['', Validators.required],
+    });
+
+    this.insuranceFormGroup = this.fb.group({
+      insurerNamePrimary: ['', Validators.required],
+      insurerPhoneNumberPrimary: ['', Validators.required],
+      insurerSubscriberNamePrimary: [''],
+      insurerEmployeePlanNamePrimary: ['', Validators.required],
+      insurerPolicyNumberPrimary: ['', Validators.required],
+      insurerGroupNumberPrimary: ['', Validators.required],
+      insurerProviderIdNumberPrimary: ['', Validators.required],
+      insurerNameSecondary: [''],
+      insurerPhoneNumberSecondary: [''],
+      insurerSubscriberNameSecondary: [''],
+      insurerEmployeePlanNameSecondary: [''],
+      insurerPolicyNumberSecondary: [''],
+      insurerGroupNumberSecondary: [''],
+      insurerProviderIdNumberSecondary: [''],
+    });
+    this.principalDiagnosisFormGroup = this.fb.group({
+      diagnosisRadio: ['', Validators.required],
     });
   }
 
