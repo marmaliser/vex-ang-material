@@ -37,13 +37,11 @@ export class Customer {
     return name;
   }
 
-  set name(value) {
-  }
+  set name(value) {}
 
   get address() {
     return `${this.street}, ${this.zipcode} ${this.city}`;
   }
 
-  set address(value) {
-  }
+  set address(value) {}
 }

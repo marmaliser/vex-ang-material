@@ -10,7 +10,7 @@
 <mat-divider class="-mx-6 text-border"></mat-divider>
 <mat-dialog-content fxLayout="column">
   <mat-horizontal-stepper linear #stepper>
-    <mat-step label="Physician Details" [stepControl]="physicianFormGroup" [editable]="true">
+    <mat-step label="Physician Details" [stepControl]="physicianFormGroup" [editable]="false">
       <form [formGroup]="physicianFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Please select a Physician</mat-label>
@@ -18,63 +18,53 @@
             disableOptionCentering
             formControlName="physicianSelect"
             (selectionChange)="physicianSelectionChange($event)"
-            required
+            [required]="!physicianCreateMode"
           >
-            <mat-option value="null">Not Listed</mat-option>
-            <mat-option value="DrPatel">Dr Patel</mat-option>
+            <mat-option>Not Listed</mat-option><mat-option value="DrPatel">Dr Patel</mat-option>
             <mat-option value="DrWatson">Dr Watson</mat-option>
           </mat-select>
         </mat-form-field>
         <ng-container *ngIf="physicianCreateMode">
           <h2 class="mb-1">Add Physician Details</h2>
           <mat-form-field appearance="fill" color="primary">
-            <mat-label>Physician Name</mat-label>
-            <input matInput type="text" formControlName="physicianName" required />
+            <mat-label>Physician Name</mat-label><input matInput type="text" formControlName="physicianName" required />
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent">
-            <mat-label>Physician Email</mat-label>
-            <input matInput type="email" formControlName="physicianEmail" required />
+            <mat-label>Physician Email</mat-label><input matInput type="email" formControlName="physicianEmail" required />
           </mat-form-field>
           <mat-form-field appearance="fill" color="warn">
-            <mat-label>Physician NPI Number</mat-label>
-            <input matInput type="text" formControlName="physicianNpi" required />
+            <mat-label>Physician NPI Number</mat-label><input matInput type="text" formControlName="physicianNpi" required />
           </mat-form-field>
         </ng-container>
       </form>
       <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!physicianFormGroup.valid">NEXT</button>
     </mat-step>
-    <mat-step label="Surgery Details" [stepControl]="surgeonFormGroup" [editable]="true">
+    <mat-step label="Surgery Details" [stepControl]="surgeonFormGroup" [editable]="false">
       <form [formGroup]="surgeonFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Please select a Surgeon</mat-label>
           <mat-select disableOptionCentering formControlName="surgeonSelect" (selectionChange)="surgeonSelectionChange($event)" required>
-            <mat-option value="null">Not Listed</mat-option>
-            <mat-option value="DrPatel">Dr Patel</mat-option>
+            <mat-option>Not Listed</mat-option><mat-option value="DrPatel">Dr Patel</mat-option>
             <mat-option value="DrWatson">Dr Watson</mat-option>
           </mat-select>
         </mat-form-field>
         <ng-container *ngIf="surgeonCreateMode">
           <h2 class="mb-1">Add Surgeon Details</h2>
           <mat-form-field appearance="fill" color="primary">
-            <mat-label>Surgeon Name</mat-label>
-            <input matInput type="text" formControlName="surgeonName" required />
+            <mat-label>Surgeon Name</mat-label><input matInput type="text" formControlName="surgeonName" [required]="!surgeonCreateMode" />
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent">
-            <mat-label>Surgeon Email</mat-label>
-            <input matInput type="email" formControlName="surgeonEmail" required />
+            <mat-label>Surgeon Email</mat-label><input matInput type="email" formControlName="surgeonEmail" required />
           </mat-form-field>
           <mat-form-field appearance="fill" color="warn">
-            <mat-label>Surgeon NPI Number</mat-label>
-            <input matInput type="text" formControlName="surgeonNpi" required />
+            <mat-label>Surgeon NPI Number</mat-label><input matInput type="text" formControlName="surgeonNpi" required />
           </mat-form-field>
         </ng-container>
         <mat-form-field appearance="fill" color="warn">
-          <mat-label>Implanting Hospital</mat-label>
-          <input matInput type="text" formControlName="surgeonHospital" required />
+          <mat-label>Implanting Hospital</mat-label><input matInput type="text" formControlName="surgeonHospital" required />
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Comments</mat-label>
-          <textarea matInput formControlName="surgeonComments" required></textarea>
+          <mat-label>Comments</mat-label><textarea matInput formControlName="surgeonComments" required></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Surgery Date</mat-label>
@@ -86,78 +76,60 @@
       <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
       <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!surgeonFormGroup.valid">NEXT</button>
     </mat-step>
-    <mat-step label="Patient Details" [stepControl]="patientFormGroup" [editable]="true">
+    <mat-step label="Patient Details" [stepControl]="patientFormGroup" [editable]="false">
       <form [formGroup]="patientFormGroup">
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="50%">
             <mat-form-field>
-              <mat-label>First Name</mat-label>
-              <input matInput formControlName="patientFirstName" required />
+              <mat-label>First Name</mat-label><input matInput formControlName="patientFirstName" required />
             </mat-form-field>
           </div>
           <div fxFlex="50%">
-            <mat-form-field>
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="patientLastName" required />
-            </mat-form-field>
+            <mat-form-field> <mat-label>Last Name</mat-label><input matInput formControlName="patientLastName" required /> </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>Patient Address</mat-label>
-              <input matInput formControlName="patientAddress" type="text" required />
+              <mat-label>Patient Address</mat-label><input matInput formControlName="patientAddress" type="text" required />
             </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="50%">
-            <mat-form-field>
-              <mat-label>City</mat-label>
-              <input matInput formControlName="patientCity" required />
-            </mat-form-field>
+            <mat-form-field><mat-label>City</mat-label><input matInput formControlName="patientCity" required /></mat-form-field>
           </div>
           <div fxFlex="25%">
-            <mat-form-field>
-              <mat-label>State</mat-label>
-              <input matInput formControlName="patientState" required />
-            </mat-form-field>
+            <mat-form-field><mat-label>State</mat-label><input matInput formControlName="patientState" required /></mat-form-field>
           </div>
           <div fxFlex="25%">
-            <mat-form-field>
-              <mat-label>Zip Code</mat-label>
-              <input matInput formControlName="patientZipCode" required />
+            <mat-form-field><mat-label>Zip Code</mat-label><input matInput formControlName="patientZipCode" required /></mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="100%">
+            <mat-form-field appearance="fill" color="accent">
+              <mat-label>Patient Phone Number</mat-label><input matInput type="tel" formControlName="patientPhoneNumber" required />
             </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>Patient Phone Number</mat-label>
-              <input matInput type="tel" formControlName="patientPhoneNumber" required />
-            </mat-form-field>
-          </div>
-        </div>
-        <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
-          <div fxFlex="100%">
-            <mat-form-field appearance="fill" color="accent">
-              <mat-label>Patient Email</mat-label>
-              <input matInput type="email" formControlName="patientEmail" required />
+              <mat-label>Patient Email</mat-label><input matInput type="email" formControlName="patientEmail" required />
             </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <p class="mt-0 mb-4 text-secondary">Sex:</p>
           <mat-radio-group formControlName="patientSex" fxLayout="row" fxLayoutGap="16px grid" fxFlexFill required>
-            <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="male">Male</mat-radio-button><mat-radio-button value="female">Female</mat-radio-button>
           </mat-radio-group>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>SSN</mat-label>
-              <input matInput type="text" formControlName="patientSsn" required />
+              <mat-label>SSN</mat-label><input matInput type="text" formControlName="patientSsn" required />
             </mat-form-field>
           </div>
         </div>
@@ -174,24 +146,21 @@
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>Guardian / Contact Name</mat-label>
-              <input matInput type="text" formControlName="guardianName" required />
+              <mat-label>Guardian / Contact Name</mat-label><input matInput type="text" formControlName="guardianName" required />
             </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>Guardian / Contact Email</mat-label>
-              <input matInput type="email" formControlName="guardianEmail" required />
+              <mat-label>Guardian / Contact Email</mat-label><input matInput type="email" formControlName="guardianEmail" required />
             </mat-form-field>
           </div>
         </div>
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="100%">
             <mat-form-field appearance="fill" color="accent">
-              <mat-label>Group Home Name</mat-label>
-              <input matInput type="text" formControlName="groupHomeName" required />
+              <mat-label>Group Home Name</mat-label><input matInput type="text" formControlName="groupHomeName" required />
             </mat-form-field>
           </div>
         </div>
@@ -199,14 +168,13 @@
       <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
       <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!patientFormGroup.valid">NEXT</button>
     </mat-step>
-    <mat-step label="Insurance Details" [stepControl]="insuranceFormGroup" [editable]="true">
+    <mat-step label="Insurance Details" [stepControl]="insuranceFormGroup" [editable]="false">
       <form [formGroup]="insuranceFormGroup">
         <div fxLayout="row" fxLayoutGap="16px grid" fxLayout.xs="column" fxFlexFill>
           <div fxFlex="50%">
             <h3>INSURER</h3>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Name of Insurance Co.</mat-label>
-              <input matInput type="text" formControlName="insurerNamePrimary" required />
+              <mat-label>Name of Insurance Co.</mat-label><input matInput type="text" formControlName="insurerNamePrimary" required />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
               <mat-label>Phone of Insurance Co.</mat-label>
@@ -221,12 +189,10 @@
               <input matInput type="text" formControlName="insurerEmployeePlanNamePrimary" required />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Policy Number</mat-label>
-              <input matInput type="text" formControlName="insurerPolicyNumberPrimary" required />
+              <mat-label>Policy Number</mat-label><input matInput type="text" formControlName="insurerPolicyNumberPrimary" required />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Group Number</mat-label>
-              <input matInput type="text" formControlName="insurerGroupNumberPrimary" required />
+              <mat-label>Group Number</mat-label><input matInput type="text" formControlName="insurerGroupNumberPrimary" required />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
               <mat-label>Provider Insurer ID Number</mat-label>
@@ -236,28 +202,23 @@
           <div fxFlex="50%">
             <h3>SECONDARY INSURER</h3>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Name of Insurance Co.</mat-label>
-              <input matInput type="text" formControlName="insurerNameSecondary" />
+              <mat-label>Name of Insurance Co.</mat-label><input matInput type="text" formControlName="insurerNameSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Phone of Insurance Co.</mat-label>
-              <input matInput type="tel" formControlName="insurerPhoneNumberSecondary" />
+              <mat-label>Phone of Insurance Co.</mat-label><input matInput type="tel" formControlName="insurerPhoneNumberSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
               <mat-label>Subscriber's Name (if different)</mat-label>
               <input matInput type="text" formControlName="insurerSubscriberNameSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Employee / Plan Name</mat-label>
-              <input matInput type="text" formControlName="insurerEmployeePlanNameSecondary" />
+              <mat-label>Employee / Plan Name</mat-label><input matInput type="text" formControlName="insurerEmployeePlanNameSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Policy Number</mat-label>
-              <input matInput type="text" formControlName="insurerPolicyNumberSecondary" />
+              <mat-label>Policy Number</mat-label><input matInput type="text" formControlName="insurerPolicyNumberSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
-              <mat-label>Group Number</mat-label>
-              <input matInput type="text" formControlName="insurerGroupNumberSecondary" />
+              <mat-label>Group Number</mat-label><input matInput type="text" formControlName="insurerGroupNumberSecondary" />
             </mat-form-field>
             <mat-form-field appearance="fill" color="primary">
               <mat-label>Provider Insurer ID Number</mat-label>
@@ -269,9 +230,9 @@
       <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
       <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!insuranceFormGroup.valid">NEXT</button>
     </mat-step>
-    <mat-step label="Principal Diagnosis" [stepControl]="principalDiagnosisFormGroup" [editable]="true">
-      <form [formGroup]="principalDiagnosisFormGroup">
-        <mat-radio-group (change)="diagnosisRadioChange($event)" formControlName="diagnosisRadio">
+    <mat-step label="Principal Diagnosis" [stepControl]="diagnosisFormGroup" [editable]="false">
+      <form [formGroup]="diagnosisFormGroup">
+        <mat-radio-group (change)="diagnosisRadioChange($event)" formControlName="diagnosisRadio" [required]="!customDiagnosis">
           <mat-radio-button value="G40211"
             >G40.211 Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with complex partial seizures,
             intractable, with status epilepticus
@@ -296,96 +257,41 @@
             >G40.119 (Attacks without alteration of conscious) Localization-related (focal) (partial) symptomatic epilepsy and epileptic
             syndromes with simple partial seizures, intractable, without status epilepticus
           </mat-radio-button>
-          <mat-radio-button value="null">Other </mat-radio-button>
+          <mat-radio-button>Other </mat-radio-button>
         </mat-radio-group>
         <mat-form-field appearance="fill" *ngIf="customDiagnosis">
-          <mat-label>Please describe</mat-label>
-          <input matInput type="text" formControlName="diagnosisInput" required />
+          <mat-label>Please describe</mat-label><input matInput type="text" formControlName="diagnosisInput" required />
         </mat-form-field>
       </form>
       <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
-      <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!principalDiagnosisFormGroup.valid">NEXT</button>
+      <button matStepperNext color="primary" mat-raised-button type="button" [disabled]="!diagnosisFormGroup.valid">NEXT</button>
+    </mat-step>
+    <mat-step label="Summery" [stepControl]="summeryFormGroup" [editable]="false">
+      <p class="mt-0 mb-4 text-secondary">Physician:</p>
+      <pre> {{ physicianFormGroup.value | json }} </pre>
+      <mat-divider></mat-divider>
+      <p class="mt-0 mb-4 text-secondary">Surgeon:</p>
+      <pre> {{ surgeonFormGroup.value | json }} </pre>
+      <mat-divider></mat-divider>
+      <p class="mt-0 mb-4 text-secondary">Patient:</p>
+      <pre> {{ patientFormGroup.value | json }} </pre>
+      <mat-divider></mat-divider>
+      <p class="mt-0 mb-4 text-secondary">Insurance:</p>
+      <pre> {{ insuranceFormGroup.value | json }} </pre>
+      <mat-divider></mat-divider>
+      <p class="mt-0 mb-4 text-secondary">Diagnosis:</p>
+      <pre> {{ diagnosisFormGroup.value | json }} </pre>
+      <mat-divider></mat-divider>
     </mat-step>
   </mat-horizontal-stepper>
-
-  <!-- <form (ngSubmit)="save()" [formGroup]="form">
-    <mat-horizontal-stepper linear #stepper formArrayName="formArray">
-
-      <mat-step label="Principal Diagnosis">
-        <p class="mt-0 mb-4 text-secondary">
-          Allow the user to slide toggle an option or a value. You can either click or you can drag & drop the slide to change its state.
-        </p>
-
-        <button matStepperPrevious color="primary" mat-raised-button type="button">BACK</button>&nbsp;
-        <button color="primary" mat-raised-button type="button">SUBMIT</button>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </form> -->
-  <!-- TODO -->
-  <!-- <div class="flex flex-col sm:flex-row">
-      <mat-form-field class="sm:mt-6 sm:ml-6 flex-auto">
-        <mat-label>Last Name</mat-label>
-        <input cdkFocusInitial formControlName="lastName" matInput />
-
-        <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
-      </mat-form-field>
-    </div>
-
-    <mat-form-field class="flex-auto">
-      <mat-label>Street</mat-label>
-      <input formControlName="street" matInput />
-
-      <mat-icon [icIcon]="icEditLocation" class="mr-3" matPrefix></mat-icon>
-    </mat-form-field>
-
-    <div class="flex flex-col sm:flex-row">
-      <mat-form-field class="flex-auto">
-        <mat-label>Zipcode</mat-label>
-        <input formControlName="zipcode" matInput />
-
-        <mat-icon [icIcon]="icMyLocation" class="mr-3" matPrefix></mat-icon>
-      </mat-form-field>
-
-      <mat-form-field class="sm:ml-6 flex-auto">
-        <mat-label>City</mat-label>
-        <input formControlName="city" matInput />
-
-        <mat-icon [icIcon]="icLocationCity" class="mr-3" matPrefix></mat-icon>
-      </mat-form-field>
-    </div>
-
-    <mat-form-field class="flex-auto">
-      <mat-label>Phone Number</mat-label>
-      <input formControlName="phoneNumber" matInput />
-
-      <mat-icon [icIcon]="icPhone" class="mr-3" matPrefix></mat-icon>
-    </mat-form-field>
-
-    <mat-form-field class="flex-auto">
-      <mat-label>Notes</mat-label>
-      <textarea formControlName="notes" matInput></textarea>
-    </mat-form-field> -->
 </mat-dialog-content>
-
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close type="button" disabled>CANCEL</button>
-  <button *ngIf="isCreateMode()" color="primary" mat-button type="submit" disabled>CREATE PATIENT</button>
-  <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit" disabled>UPDATE PATIENT</button>
+  <button mat-button mat-dialog-close type="button">CANCEL</button>
+  <button *ngIf="isCreateMode()" color="primary" mat-button (click)="createCustomer()" [disabled]="!isAllValid()">CREATE PATIENT</button>
+  <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit" [disabled]="!isAllValid()">UPDATE PATIENT</button>
 </mat-dialog-actions>
-
 <mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
-  <button mat-menu-item disabled>
-    <mat-icon [icIcon]="icPrint"></mat-icon>
-    <span>Print</span>
-  </button>
-
-  <button mat-menu-item disabled>
-    <mat-icon [icIcon]="icDownload"></mat-icon>
-    <span>Export</span>
-  </button>
-
-  <button mat-menu-item disabled>
-    <mat-icon [icIcon]="icDelete"></mat-icon>
-    <span>Delete</span>
-  </button>
+  <button mat-menu-item disabled><mat-icon [icIcon]="icPrint"></mat-icon><span>Print</span></button>
+  <button mat-menu-item disabled><mat-icon [icIcon]="icDownload"></mat-icon><span>Export</span></button>
+  <button mat-menu-item disabled><mat-icon [icIcon]="icDelete"></mat-icon><span>Delete</span></button>
 </mat-menu>

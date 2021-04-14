@@ -14,6 +14,7 @@ import icLocationCity from '@iconify/icons-ic/twotone-location-city';
 import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { MatRadioChange } from '@angular/material/radio';
+import { aioTableLabels } from 'src/static-data/aio-table-data';
 
 @Component({
   selector: 'vex-customer-create-update',
@@ -29,7 +30,10 @@ export class CustomerCreateUpdateComponent implements OnInit {
   surgeonCreateMode = false;
   patientFormGroup: FormGroup;
   insuranceFormGroup: FormGroup;
-  principalDiagnosisFormGroup: FormGroup;
+  diagnosisFormGroup: FormGroup;
+  summeryFormGroup: FormGroup;
+  customDiagnosis = false;
+
   mode: 'create' | 'update' = 'create';
 
   icMoreVert = icMoreVert;
@@ -50,59 +54,24 @@ export class CustomerCreateUpdateComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  physicianSelectionChange(event: MatSelectChange) {
-    if (event.value == 'null') {
-      this.physicianCreateMode = true;
-      this.physicianFormGroup.addControl('physicianName', new FormControl('', Validators.required));
-      this.physicianFormGroup.addControl('physicianEmail', new FormControl('', [Validators.required, Validators.email]));
-      this.physicianFormGroup.addControl('physicianNpi', new FormControl('', Validators.required));
-    } else {
-      this.physicianCreateMode = false;
-      this.physicianFormGroup.removeControl('physicianName');
-      this.physicianFormGroup.removeControl('physicianEmail');
-      this.physicianFormGroup.removeControl('physicianNpi');
-    }
-  }
-
-  surgeonSelectionChange(event: MatSelectChange) {
-    if (event.value == 'null') {
-      this.surgeonCreateMode = true;
-      this.surgeonFormGroup.addControl('surgeonName', new FormControl('', Validators.required));
-      this.surgeonFormGroup.addControl('surgeonEmail', new FormControl('', [Validators.required, Validators.email]));
-      this.surgeonFormGroup.addControl('surgeonNpi', new FormControl('', Validators.required));
-    } else {
-      this.surgeonCreateMode = false;
-      this.surgeonFormGroup.removeControl('surgeonName');
-      this.surgeonFormGroup.removeControl('surgeonEmail');
-      this.surgeonFormGroup.removeControl('surgeonNpi');
-    }
-  }
-  customDiagnosis = false;
-  diagnosisRadioChange(event: MatRadioChange) {
-    if (event.value == 'null') {
-      this.customDiagnosis = true;
-      this.principalDiagnosisFormGroup.addControl('diagnosisInput', new FormControl('', Validators.required));
-    } else {
-      this.customDiagnosis = false;
-      this.principalDiagnosisFormGroup.removeControl('diagnosisInput');
-    }
-  }
-
   ngOnInit() {
     if (this.defaults) {
       this.mode = 'update';
     } else {
       this.defaults = {} as Customer;
     }
+
     this.physicianFormGroup = this.fb.group({
       physicianSelect: ['', Validators.required],
     });
+
     this.surgeonFormGroup = this.fb.group({
       surgeonSelect: ['', Validators.required],
       surgeonHospital: ['', Validators.required],
       surgeonComments: ['', Validators.required],
       surgeryDatepicker: ['', Validators.required],
     });
+
     this.patientFormGroup = this.fb.group({
       patientFirstName: ['', Validators.required],
       patientLastName: ['', Validators.required],
@@ -136,9 +105,74 @@ export class CustomerCreateUpdateComponent implements OnInit {
       insurerGroupNumberSecondary: [''],
       insurerProviderIdNumberSecondary: [''],
     });
-    this.principalDiagnosisFormGroup = this.fb.group({
+
+    this.diagnosisFormGroup = this.fb.group({
       diagnosisRadio: ['', Validators.required],
     });
+
+    this.summeryFormGroup = this.fb.group({});
+  }
+
+  physicianSelectionChange(event: MatSelectChange) {
+    if (event.value) {
+      this.physicianCreateMode = false;
+      this.physicianFormGroup.removeControl('physicianName');
+      this.physicianFormGroup.removeControl('physicianEmail');
+      this.physicianFormGroup.removeControl('physicianNpi');
+      this.physicianFormGroup.get('physicianSelect').setValidators([Validators.required]);
+      this.physicianFormGroup.get('physicianSelect').updateValueAndValidity();
+    } else {
+      this.physicianCreateMode = true;
+      this.physicianFormGroup.addControl('physicianName', new FormControl('', Validators.required));
+      this.physicianFormGroup.addControl('physicianEmail', new FormControl('', [Validators.required, Validators.email]));
+      this.physicianFormGroup.addControl('physicianNpi', new FormControl('', Validators.required));
+      this.physicianFormGroup.get('physicianSelect').clearValidators();
+      this.physicianFormGroup.get('physicianSelect').updateValueAndValidity();
+    }
+  }
+
+  surgeonSelectionChange(event: MatSelectChange) {
+    if (event.value) {
+      this.surgeonCreateMode = false;
+      this.surgeonFormGroup.removeControl('surgeonName');
+      this.surgeonFormGroup.removeControl('surgeonEmail');
+      this.surgeonFormGroup.removeControl('surgeonNpi');
+      this.surgeonFormGroup.get('surgeonSelect').setValidators([Validators.required]);
+      this.surgeonFormGroup.get('surgeonSelect').updateValueAndValidity();
+    } else {
+      this.surgeonCreateMode = true;
+      this.surgeonFormGroup.addControl('surgeonName', new FormControl('', Validators.required));
+      this.surgeonFormGroup.addControl('surgeonEmail', new FormControl('', [Validators.required, Validators.email]));
+      this.surgeonFormGroup.addControl('surgeonNpi', new FormControl('', Validators.required));
+      this.surgeonFormGroup.get('surgeonSelect').clearValidators();
+      this.surgeonFormGroup.get('surgeonSelect').updateValueAndValidity();
+    }
+  }
+
+  diagnosisRadioChange(event: MatRadioChange) {
+    if (event.value) {
+      this.customDiagnosis = false;
+      this.diagnosisFormGroup.removeControl('diagnosisInput');
+      this.diagnosisFormGroup.removeControl('diagnosisInput');
+      this.diagnosisFormGroup.get('diagnosisRadio').setValidators([Validators.required]);
+      this.diagnosisFormGroup.get('diagnosisRadio').updateValueAndValidity();
+    } else {
+      this.customDiagnosis = true;
+      this.diagnosisFormGroup.addControl('diagnosisInput', new FormControl('', Validators.required));
+      this.diagnosisFormGroup.get('diagnosisRadio').clearValidators();
+      this.diagnosisFormGroup.get('diagnosisRadio').updateValueAndValidity();
+    }
+  }
+
+  isAllValid(): boolean {
+    return (
+      this.physicianFormGroup.valid &&
+      this.surgeonFormGroup.valid &&
+      this.patientFormGroup.valid &&
+      this.insuranceFormGroup.valid &&
+      this.diagnosisFormGroup.valid &&
+      this.summeryFormGroup.valid
+    );
   }
 
   save() {
@@ -150,11 +184,19 @@ export class CustomerCreateUpdateComponent implements OnInit {
   }
 
   createCustomer() {
-    // const customer = this.form.value;
-    // if (!customer.imageSrc) {
-    //   customer.imageSrc = 'assets/img/avatars/1.png';
-    // }
-    // this.dialogRef.close(customer);
+    const customer = new Customer({
+      imageSrc: 'assets/img/avatars/1.png',
+      firstName: this.patientFormGroup.value.patientFirstName,
+      lastName: this.patientFormGroup.value.patientLastName,
+      street: this.patientFormGroup.value.patientAddress,
+      zipcode: this.patientFormGroup.value.patientZipCode,
+      city: this.patientFormGroup.value.patientCity,
+      phoneNumber: this.patientFormGroup.value.patientPhoneNumber,
+      mail: this.patientFormGroup.value.patientEmail,
+      labels: [aioTableLabels[0], aioTableLabels[2]],
+    });
+
+    this.dialogRef.close(customer);
   }
 
   updateCustomer() {
