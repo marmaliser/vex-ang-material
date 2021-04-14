@@ -69,9 +69,6 @@ RUN cat /root/config.sh /root/.zshrc > /root/.zshrc_spaceship && cp /root/.zshrc
 # RUN apt-get -y install python3-pip pylint
 # RUN cp /usr/bin/pip3 /usr/bin/pip && chmod +x /usr/bin/pip
 
-# Install Firebase CLI
-# RUN curl -sL https://firebase.tools | bash
-# RUN curl -L https://firebase.tools/bin/linux/latest -o /usr/local/bin/firebase && chmod +x /usr/local/bin/firebase
 
 # Install Node
 ARG NODE_VERSION=14.16.0
@@ -80,7 +77,11 @@ RUN mkdir -p /usr/local/lib/nodejs && \
     tar -xvf "/tmp/node-v${NODE_VERSION}.tar.xz" -C /usr/local/lib/nodejs
 ENV PATH="/usr/local/lib/nodejs/node-v${NODE_VERSION}-linux-x64/bin:${PATH}"
 
+
 RUN npm install -g @angular/cli@11.2.3
+
+# Install Firebase CLI
+RUN npm install -g firebase-tools@9.10.0
 
 #
 # Install Salesforce CLI
