@@ -16,13 +16,9 @@ import { stagger40ms } from '../../../../@vex/animations/stagger.animation';
   selector: 'vex-help-center',
   templateUrl: './help-center.component.html',
   styleUrls: ['./help-center.component.scss'],
-  animations: [
-    stagger40ms,
-    fadeInUp400ms
-  ]
+  animations: [stagger40ms, fadeInUp400ms],
 })
 export class HelpCenterComponent implements OnInit {
-
   icSearch = icSearch;
   icPhoneInTalk = icPhoneInTalk;
   icMail = icMail;
@@ -31,30 +27,28 @@ export class HelpCenterComponent implements OnInit {
     {
       label: 'Getting Started',
       route: 'getting-started',
-      icon: icFlag
+      icon: icFlag,
     },
-    {
-      label: 'Pricing & Plans',
-      route: 'pricing',
-      icon: icAttachMoney
-    },
+    // {
+    //   label: 'Pricing & Plans',
+    //   route: 'pricing',
+    //   icon: icAttachMoney
+    // },
     {
       label: 'FAQ',
       route: 'faq',
-      icon: icContactSupport
+      icon: icContactSupport,
     },
     {
       label: 'Guides',
       route: 'guides',
-      icon: icBook
-    }
+      icon: icBook,
+    },
   ];
 
   trackByRoute = trackByRoute;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
